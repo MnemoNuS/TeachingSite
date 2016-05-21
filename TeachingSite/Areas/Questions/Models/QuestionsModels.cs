@@ -1,40 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace TeachingSite.Areas.Questions.Models
 {
 
     public class QuestionsContext : DbContext
     {
-        public QuestionsContext() :base("DefaultConnection"){ }
+        public QuestionsContext() : base("DefaultConnection") { }
         public DbSet<GrammaQuestion> GrammaQuestions { get; set; }
         public DbSet<LexicQuestion> LexicQuestions { get; set; }
         public DbSet<LexicType> LexicTypes { get; set; }
         public DbSet<GrammaCategory> GrammaCategories { get; set; }
-        public DbSet<QIcon> QIcons { get; set; }
         public DbSet<EslLevel> EslLevels { get; set; }
     }
 
     public class Question
     {
+        [Key]
         public int Id { get; set; }
+        [DisplayName("Question")]
         public string Body { get; set; }
+        [DisplayName("Answer")]
         public string Answer { get; set; }
         public int? TypeId { get; set; }
-        public QuestionType Type { get; set; }
+        [DisplayName("Question type")]
+        public virtual string Type { get; set; }
+        [DisplayName("Creation date")]
         public DateTime Date { get; set; }
-
     }
+
+    public class GrammaQuestion : Question
+    {
+        public override string Type { get { return "GrammaQuestion"; } }
+        public int? EslLevelId { get; set; }
+        [DisplayName("Esl Level")]
+        public EslLevel EslLevel { get; set; }
+        public int? GramaCategoryId { get; set; }
+        [DisplayName("Gramma category")]
+        public GrammaCategory GrammaCategory { get; set; }
+    }
+
+    public class LexicQuestion : Question
+    {
+        public override string Type { get { return "LexicQuestion"; } }
+        [DisplayName("Topic")]
+        public string Topic { get; set; }
+        public int? LexicTypeId { get; set; }
+        [DisplayName("Lexic type")]
+        public LexicType LexicType { get; set; }
+    }
+
     public class QuestionProperty
     {
+        [Key]
         public int Id { get; set; }
+        [DisplayName("Question type")]
         public virtual string Type { get; set; }
-        public string Name { get; set; }
-    }
-
-    public class QuestionType : QuestionProperty
-    {
     }
 
     public class LexicType : QuestionProperty
@@ -52,45 +78,6 @@ namespace TeachingSite.Areas.Questions.Models
         public override string Type { get { return "GrammaCategory"; } }
     }
 
-
-    public class GrammaQuestion : Question
-    {
-        public int? EslLevelId { get; set; }
-        public EslLevel EslLevel { get; set; }
-        public int? GramaCategoryId { get; set; }
-        public GrammaCategory GrammaCategory { get; set; }
-    }
-
-    public class LexicQuestion : Question
-    {
-        public string Topic { get; set; }
-        public int? LexicTypeId { get; set; }
-        public LexicType LexicType { get; set; }
-    }
-
-
-
-    public class QIcon
-    {
-        public int Id { get; set; }
-        public string IconUrl { get; set; }
-        public virtual List<Tag> Tags { get; set; }
-
-    }
-
-    public class QuestionsList
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public virtual List<Question> Questions { get; set; }
-        public virtual List<Tag> Tags { get; set; }
-    }
-
-    public class Tag
-    {
-        public int Id { get; set; }
-        public string TagName { get; set; }
-    }
-
 }
+
+
