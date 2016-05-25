@@ -10,8 +10,9 @@ namespace TeachingSite.Areas.Games.Models
 
     public class GamesContext : DbContext
     {
-        public GamesContext() : base("DefaultConnection") { }
-        public DbSet<Game> Games { get; set; }
+        public GamesContext() : base("DBConnection") { }
+
+		public DbSet<Game> Games { get; set; }
         public DbSet<GameType> GameTypes { get; set; }
     }
 

@@ -9,10 +9,10 @@ using System.Linq.Expressions;
 namespace TeachingSite.Areas.Questions.Models
 {
 
-    public class QuestionsContext : DbContext
+     class QuestionsContext : DbContext
     {
-        public QuestionsContext() : base("DefaultConnection") { }
-        public DbSet<GrammaQuestion> GrammaQuestions { get; set; }
+		public QuestionsContext() : base("DBConnection") { }
+		public DbSet<GrammaQuestion> GrammaQuestions { get; set; }
         public DbSet<LexicQuestion> LexicQuestions { get; set; }
         public DbSet<LexicType> LexicTypes { get; set; }
         public DbSet<GrammaCategory> GrammaCategories { get; set; }
@@ -66,17 +66,20 @@ namespace TeachingSite.Areas.Questions.Models
     public class LexicType : QuestionProperty
     {
         public override string Type { get { return "LexicType"; } }
-    }
+		public string Element { get; set; }
+	}
 
     public class EslLevel : QuestionProperty
     {
         public override string Type { get { return "EslLevel"; } }
-    }
+		public string Element { get; set; }
+	}
 
-    public class GrammaCategory : QuestionProperty
+	public class GrammaCategory : QuestionProperty
     {
         public override string Type { get { return "GrammaCategory"; } }
-    }
+		public string Element { get; set; }
+	}
 
 }
 
