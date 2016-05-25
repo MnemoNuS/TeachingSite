@@ -3,13 +3,33 @@
     ViewBag.Title = "Questions editor";
 }
 
-<h2>Questions types</h2>
+<div class="row">
+    <div class="col-md-2">
+        <h2>Questions types</h2>
 
-<ul>
-	<li>
-		@Html.ActionLink("Gramma questions", "Index", "GrammaQuestions") 
-	</li>
-	<li>
-		@Html.ActionLink("Lexic questions", "Index", "LexicQuestions") 
-	</li>
-</ul>
+        <ul>
+            <li>
+                @Html.ActionLink("Gramma questions", "Index", "GrammaQuestions")
+            </li>
+            <li>
+                @Html.ActionLink("Lexic questions", "Index", "LexicQuestions")
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-2">
+        <h2>Questions parameters</h2>
+
+        <ul>
+            <li>
+                @Html.ActionLink("LexicTypes", "Index", "LexicTypes")
+            </li>
+            <li>
+                @Html.ActionLink("EslLevels", "Index", "EslLevels")
+            </li>
+            <li>
+                @Html.ActionLink("GrammaCategories", "Index", "GrammaCategories")
+            </li>
+        </ul>
+    </div>
+</div>
