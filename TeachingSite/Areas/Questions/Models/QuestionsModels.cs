@@ -34,7 +34,7 @@ namespace TeachingSite.Areas.Questions.Models
         public DateTime Date { get; set; }
     }
 
-    public class GrammaQuestion : Question
+	public class GrammaQuestion : Question
     {
         public override string Type { get { return "GrammaQuestion"; } }
         public int? EslLevelId { get; set; }
@@ -45,7 +45,7 @@ namespace TeachingSite.Areas.Questions.Models
         public GrammaCategory GrammaCategory { get; set; }
     }
 
-    public class LexicQuestion : Question
+	public class LexicQuestion : Question
     {
         public override string Type { get { return "LexicQuestion"; } }
         [DisplayName("Topic")]
@@ -63,21 +63,24 @@ namespace TeachingSite.Areas.Questions.Models
         public virtual string Type { get; set; }
     }
 
-    public class LexicType : QuestionProperty
+	public class LexicType : QuestionProperty
     {
         public override string Type { get { return "LexicType"; } }
+		[DisplayName("Lexic type")]
 		public string Element { get; set; }
 	}
 
-    public class EslLevel : QuestionProperty
+	public class EslLevel : QuestionProperty
     {
         public override string Type { get { return "EslLevel"; } }
+		[DisplayName("Esl Level")]
 		public string Element { get; set; }
 	}
 
 	public class GrammaCategory : QuestionProperty
     {
         public override string Type { get { return "GrammaCategory"; } }
+		[DisplayName("Gramma category")]
 		public string Element { get; set; }
 	}
 
