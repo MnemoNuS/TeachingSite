@@ -1,0 +1,64 @@
+/* As hex codes */
+
+.color-primary-0 { color: #B8E49E }	/* back */
+.color-primary-1 { color: #EEF9E7 } /* light */
+.color-primary-2 { color: #D5F0C6 }
+.color-primary-3 { color: #90C96E }
+.color-primary-4 { color: #63A23D } /*text*/
+
+
+#F {
+ width: 900px; /* Ширина макета */
+ margin: 0 auto; /* Выравнивание по центру */
+ }
+
+#FL {
+display:inline-block;
+ width: 200px; /* Ширина левой колонки */
+ float: left;
+ margin:0;
+}
+#FR {
+ display:inline-block;
+ width: 200px; /* Ширина правой колонки */
+ float: right;
+ margin:0;
+}
+#FC {
+display:inline-block;
+ width: 500px; 
+ /* Отступ на ширину левой и правой колонки*/
+}
+
+#FLT,#FLM,#FLB,#FRT,#FRM,#FRB {
+ 	
+ width: 100%; /* Ширина левой колонки */
+ height:200px;
+ margin:0;
+ padding:0;
+ color:transparent;
+ background-image:url(../images/200x200.png);
+ background: transparent;
+ background-size:cover;
+}
+#FCT,#FCB{
+ 	
+ width: 100%; /* Ширина левой колонки */
+ height:50px;
+ margin:0;
+ padding:0;
+ color:transparent;
+ background-image:url(../images/500x50.png);
+ background: transparent;
+ background-size:cover;
+}
+#FCM{
+ 
+ width: 500px;/* Ширина центрального блока */
+ height:500px;
+ background:transparent;
+ }
+
+
+
+

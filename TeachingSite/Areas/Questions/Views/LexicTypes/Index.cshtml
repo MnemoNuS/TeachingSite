@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<TeachingSite.Areas.Questions.Models.LexicType>
 
 @{
-	ViewBag.Title = @Html.DisplayNameFor(model => model.Element);
+    ViewBag.Title = "Index";
 }
 
-<h2>Full list</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Element)
+            @Html.DisplayNameFor(model => model.LexicTypeName)
         </th>
         <th></th>
     </tr>
@@ -20,7 +20,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Element)
+            @Html.DisplayFor(modelItem => item.LexicTypeName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

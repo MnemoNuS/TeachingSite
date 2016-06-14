@@ -1,0 +1,111 @@
+﻿@using TeachingSite.Areas.Questions.Models
+@model TeachingSite.Areas.Questions.Models.Theme
+
+@{
+    List<GrammaQuestion> grammatiQuestions = ViewBag.GrammaQuestions;
+
+    ViewBag.Title = "Create theme";
+}
+
+<h2>Create Theme</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Theme</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="editor-label col-md-2">
+                <b>Questions</b>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#G">Grammatic</a></li>
+                <li><a data-toggle="tab" href="#L">Lexical</a></li>
+                <li><a data-toggle="tab" href="#A">All</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="G" class="tab-pane fade in active">
+                    @{
+                        if (ViewBag.GrammaQuestions != null)
+                        {
+                            foreach (GrammaQuestion q in ViewBag.GrammaQuestions)
+                            {
+                                <input class="form-control" type="checkbox" name="selectedQuestions" value="@q.Id"/>
+                                <p>Q-@q.Body</p>
+                                <p>A-@q.Answer</p>
+                                <label class="label">@q.GrammaCategory</label>
+                                <label class="label">@q.EslLevel</label>
+                                <br />
+                            }
+                        }
+                    }
+                </div>
+                <div id="L" class="tab-pane fade">
+                    @{
+                        if (ViewBag.LexicQuestions != null)
+                        {
+                            foreach (LexicQuestion q in ViewBag.LexicQuestions)
+                            {
+                            <input class="form-control" type="checkbox" name="selectedQuestions" value="@q.Id" />
+                                <p>Q-@q.Body</p>
+                                <p>A-@q.Answer</p>
+                                <label class="label">@q.LexicType</label>
+                                <label class="label">@q.Topic</label>
+                                <br />
+                            }
+                        }
+                    }
+                </div>
+                <div id="A" class="tab-pane fade">
+                    @{
+                        if (ViewBag.Questions != null)
+                        {
+                            foreach (Question q in ViewBag.Questions)
+                            {
+                            <input class="form-control" type="checkbox" name="selectedQuestions" value="@q.Id" />
+                                <p>Q-@q.Body</p>
+                                <p>A-@q.Answer</p>
+                                <br />
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+                        }
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

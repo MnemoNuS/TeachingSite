@@ -38,4 +38,16 @@ namespace TeachingSite.Areas.Games.Models
         public string Type { get; set; }
         public string Description { get; set; }
     }
+        public class GameSet
+    {
+        [Key]
+        public int Id { get; set; }
+        [DisplayName("Game set")]
+        [Required]
+        public string Name { get; set; }
+        [DisplayName("Game set Description")]
+        public string Description { get; set; }
+        public ThemeSet ThemeSet { get; set; }
+    }
+
 }

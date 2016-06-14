@@ -42,11 +42,11 @@ namespace TeachingSite.Areas.Questions.Controllers
         }
 
         // POST: Questions/GrammaCategories/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
+        // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Element")] GrammaCategory grammaCategory)
+        public ActionResult Create([Bind(Include = "Id,GrammaCategoryName")] GrammaCategory grammaCategory)
         {
             if (ModelState.IsValid)
             {
@@ -74,11 +74,11 @@ namespace TeachingSite.Areas.Questions.Controllers
         }
 
         // POST: Questions/GrammaCategories/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
+        // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Element")] GrammaCategory grammaCategory)
+        public ActionResult Edit([Bind(Include = "Id,GrammaCategoryName")] GrammaCategory grammaCategory)
         {
             if (ModelState.IsValid)
             {

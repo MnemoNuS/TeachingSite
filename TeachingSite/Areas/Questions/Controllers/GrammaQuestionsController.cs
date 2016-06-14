@@ -14,11 +14,11 @@ namespace TeachingSite.Areas.Questions.Controllers
     {
         private QuestionsContext db = new QuestionsContext();
 
+
         // GET: Questions/GrammaQuestions
         public ActionResult Index()
         {
-            var grammaQuestions = db.GrammaQuestions.Include(g => g.EslLevel);
-            return View(grammaQuestions.ToList());
+            return View(db.GrammaQuestions.ToList());
         }
 
         // GET: Questions/GrammaQuestions/Details/5
@@ -39,25 +39,27 @@ namespace TeachingSite.Areas.Questions.Controllers
         // GET: Questions/GrammaQuestions/Create
         public ActionResult Create()
         {
-            ViewBag.EslLevelId = new SelectList(db.EslLevels, "Id", "Id");
+            ViewBag.GrammaCategories = db.GrammaCategories.Select(g=>g.GrammaCategoryName).ToList();
+            ViewBag.EslLevels = db.EslLevels.Select(e=>e.EslLevelName).ToList();
+
             return View();
         }
 
         // POST: Questions/GrammaQuestions/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
+        // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,EslLevelId,GramaCategoryId,Body,Answer,TypeId,Date")] GrammaQuestion grammaQuestion)
+        public ActionResult Create([Bind(Include = "Id,GrammaCategory,EslLevel,Body,Answer")] GrammaQuestion grammaQuestion)
         {
             if (ModelState.IsValid)
             {
+                grammaQuestion.ModifiedAt = DateTime.Now;
                 db.GrammaQuestions.Add(grammaQuestion);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.EslLevelId = new SelectList(db.EslLevels, "Id", "Id", grammaQuestion.EslLevelId);
             return View(grammaQuestion);
         }
 
@@ -73,24 +75,25 @@ namespace TeachingSite.Areas.Questions.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.EslLevelId = new SelectList(db.EslLevels, "Id", "Id", grammaQuestion.EslLevelId);
+            ViewBag.GrammaCategories = db.GrammaCategories.Select(g => g.GrammaCategoryName).ToList();
+            ViewBag.EslLevels = db.EslLevels.Select(e => e.EslLevelName).ToList();
             return View(grammaQuestion);
         }
 
         // POST: Questions/GrammaQuestions/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
+        // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,EslLevelId,GramaCategoryId,Body,Answer,TypeId,Date")] GrammaQuestion grammaQuestion)
+        public ActionResult Edit([Bind(Include = "Id,GrammaCategory,EslLevel,Body,Answer")] GrammaQuestion grammaQuestion)
         {
             if (ModelState.IsValid)
             {
+                grammaQuestion.ModifiedAt = DateTime.Now;
                 db.Entry(grammaQuestion).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.EslLevelId = new SelectList(db.EslLevels, "Id", "Id", grammaQuestion.EslLevelId);
             return View(grammaQuestion);
         }
 

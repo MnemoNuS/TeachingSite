@@ -1,5 +1,11 @@
-﻿@model TeachingSite.Areas.Questions.Models.GrammaQuestion
+﻿
+@using TeachingSite.Areas.Questions.Models
+@model TeachingSite.Areas.Questions.Models.GrammaQuestion
+@{
+    List<string> GrammaCategories = ViewBag.GrammaCategories;
+    List<string> EslLevels = ViewBag.EslLevels;
 
+     }
 @{
     ViewBag.Title = "Create";
 }
@@ -7,30 +13,28 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>GrammaQuestion</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.EslLevelId, "EslLevelId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.GrammaCategory, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.DropDownList("EslLevelId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.EslLevelId, "", new { @class = "text-danger" })
+                @Html.DropDownListFor( model => model.GrammaCategory, new SelectList(GrammaCategories, GrammaCategories.FirstOrDefault()),  new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.GrammaCategory, "", new {@class = "text-danger"})
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.GramaCategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="form-group">
+            @Html.LabelFor(model => model.EslLevel, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.GramaCategoryId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.GramaCategoryId, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.EslLevel, new SelectList(EslLevels, EslLevels.FirstOrDefault()), new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EslLevel, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -44,22 +48,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Answer, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Answer, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TypeId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TypeId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TypeId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
             </div>
         </div>
 

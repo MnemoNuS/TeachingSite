@@ -216,20 +216,60 @@
     <Compile Include="Areas\Questions\Controllers\EslLevelsController.cs" />
     <Compile Include="Areas\Questions\Controllers\GrammaCategoriesController.cs" />
     <Compile Include="Areas\Questions\Controllers\GrammaQuestionsController.cs" />
-    <Compile Include="Areas\Questions\Controllers\LexicQuestionsController.cs" />
     <Compile Include="Areas\Questions\Controllers\LexicTypesController.cs" />
     <Compile Include="Areas\Questions\Controllers\QuestionsController.cs" />
+    <Compile Include="Areas\Questions\Controllers\ThemesController.cs" />
     <Compile Include="Areas\Questions\Models\QuestionsModels.cs" />
     <Compile Include="Areas\Questions\QuestionsAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606121033506_InitialCreate.cs" />
+    <Compile Include="Migrations\201606121033506_InitialCreate.Designer.cs">
+      <DependentUpon>201606121033506_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606131015196_AddThemClass.cs" />
+    <Compile Include="Migrations\201606131015196_AddThemClass.Designer.cs">
+      <DependentUpon>201606131015196_AddThemClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606141713402_newtemes.cs" />
+    <Compile Include="Migrations\201606141713402_newtemes.Designer.cs">
+      <DependentUpon>201606141713402_newtemes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606141922392_newtemes1.cs" />
+    <Compile Include="Migrations\201606141922392_newtemes1.Designer.cs">
+      <DependentUpon>201606141922392_newtemes1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606141944228_newtemes2.cs" />
+    <Compile Include="Migrations\201606141944228_newtemes2.Designer.cs">
+      <DependentUpon>201606141944228_newtemes2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606141953059_newtemes3.cs" />
+    <Compile Include="Migrations\201606141953059_newtemes3.Designer.cs">
+      <DependentUpon>201606141953059_newtemes3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606142006048_newtemes4.cs" />
+    <Compile Include="Migrations\201606142006048_newtemes4.Designer.cs">
+      <DependentUpon>201606142006048_newtemes4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\Spring.Rest.txt" />
     <Content Include="App_Readme\Spring.Social.Core.txt" />
+    <Content Include="Areas\Questions\Content\CSS\GF.css" />
+    <Content Include="Areas\Questions\Content\CSS\TS.css" />
+    <Content Include="Areas\Questions\Content\images\200x200.png" />
+    <Content Include="Areas\Questions\Content\images\500x50.png" />
+    <Content Include="Areas\Questions\Content\images\abstract.jpg" />
+    <Content Include="Areas\Questions\Content\images\fon-stripe-footer.png" />
+    <Content Include="Areas\Questions\Content\images\fon.png" />
+    <Content Include="Areas\Questions\Content\images\spring.jpg" />
+    <Content Include="Areas\Questions\Content\images\watercolor.jpg" />
+    <Content Include="Areas\Questions\Content\JS\game.js" />
+    <Content Include="Areas\Questions\Content\JS\timer.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1077,32 +1117,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Areas\Questions\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Questions\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Questions\Views\LexicQuestions\Create.cshtml" />
-    <Content Include="Areas\Questions\Views\LexicQuestions\Delete.cshtml" />
-    <Content Include="Areas\Questions\Views\LexicQuestions\Details.cshtml" />
-    <Content Include="Areas\Questions\Views\LexicQuestions\Edit.cshtml" />
-    <Content Include="Areas\Questions\Views\LexicQuestions\Index.cshtml" />
-    <Content Include="Areas\Questions\Views\GrammaQuestions\Create.cshtml" />
-    <Content Include="Areas\Questions\Views\GrammaQuestions\Delete.cshtml" />
-    <Content Include="Areas\Questions\Views\GrammaQuestions\Details.cshtml" />
-    <Content Include="Areas\Questions\Views\GrammaQuestions\Edit.cshtml" />
-    <Content Include="Areas\Questions\Views\GrammaQuestions\Index.cshtml" />
     <Content Include="Areas\Questions\Views\QuestionsEditor\Index.cshtml" />
-    <Content Include="Areas\Questions\Views\EslLevels\Create.cshtml" />
-    <Content Include="Areas\Questions\Views\EslLevels\Delete.cshtml" />
-    <Content Include="Areas\Questions\Views\EslLevels\Details.cshtml" />
-    <Content Include="Areas\Questions\Views\EslLevels\Edit.cshtml" />
-    <Content Include="Areas\Questions\Views\EslLevels\Index.cshtml" />
-    <Content Include="Areas\Questions\Views\GrammaCategories\Create.cshtml" />
-    <Content Include="Areas\Questions\Views\GrammaCategories\Delete.cshtml" />
-    <Content Include="Areas\Questions\Views\GrammaCategories\Details.cshtml" />
-    <Content Include="Areas\Questions\Views\GrammaCategories\Edit.cshtml" />
-    <Content Include="Areas\Questions\Views\GrammaCategories\Index.cshtml" />
-    <Content Include="Areas\Questions\Views\LexicTypes\Create.cshtml" />
-    <Content Include="Areas\Questions\Views\LexicTypes\Delete.cshtml" />
-    <Content Include="Areas\Questions\Views\LexicTypes\Details.cshtml" />
-    <Content Include="Areas\Questions\Views\LexicTypes\Edit.cshtml" />
-    <Content Include="Areas\Questions\Views\LexicTypes\Index.cshtml" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
@@ -1178,6 +1193,32 @@
     <Content Include="Content\bootstrap\bootstrap.less" />
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
+    <Content Include="Areas\Questions\Views\EslLevels\Create.cshtml" />
+    <Content Include="Areas\Questions\Views\EslLevels\Delete.cshtml" />
+    <Content Include="Areas\Questions\Views\EslLevels\Details.cshtml" />
+    <Content Include="Areas\Questions\Views\EslLevels\Edit.cshtml" />
+    <Content Include="Areas\Questions\Views\EslLevels\Index.cshtml" />
+    <Content Include="Areas\Questions\Content\images\PE-logo.svg" />
+    <Content Include="Areas\Questions\Views\GrammaCategories\Create.cshtml" />
+    <Content Include="Areas\Questions\Views\GrammaCategories\Delete.cshtml" />
+    <Content Include="Areas\Questions\Views\GrammaCategories\Details.cshtml" />
+    <Content Include="Areas\Questions\Views\GrammaCategories\Edit.cshtml" />
+    <Content Include="Areas\Questions\Views\GrammaCategories\Index.cshtml" />
+    <Content Include="Areas\Questions\Views\LexicTypes\Create.cshtml" />
+    <Content Include="Areas\Questions\Views\LexicTypes\Delete.cshtml" />
+    <Content Include="Areas\Questions\Views\LexicTypes\Details.cshtml" />
+    <Content Include="Areas\Questions\Views\LexicTypes\Edit.cshtml" />
+    <Content Include="Areas\Questions\Views\LexicTypes\Index.cshtml" />
+    <Content Include="Areas\Questions\Views\GrammaQuestions\Create.cshtml" />
+    <Content Include="Areas\Questions\Views\GrammaQuestions\Delete.cshtml" />
+    <Content Include="Areas\Questions\Views\GrammaQuestions\Details.cshtml" />
+    <Content Include="Areas\Questions\Views\GrammaQuestions\Edit.cshtml" />
+    <Content Include="Areas\Questions\Views\GrammaQuestions\Index.cshtml" />
+    <Content Include="Areas\Questions\Views\Themes\Create.cshtml" />
+    <Content Include="Areas\Questions\Views\Themes\Delete.cshtml" />
+    <Content Include="Areas\Questions\Views\Themes\Details.cshtml" />
+    <Content Include="Areas\Questions\Views\Themes\Edit.cshtml" />
+    <Content Include="Areas\Questions\Views\Themes\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1219,12 +1260,36 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Games\Controllers\" />
     <Folder Include="Areas\Games\Views\Shared\" />
+    <Folder Include="Areas\Questions\Content\fonts\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201606121033506_InitialCreate.resx">
+      <DependentUpon>201606121033506_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606131015196_AddThemClass.resx">
+      <DependentUpon>201606131015196_AddThemClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606141713402_newtemes.resx">
+      <DependentUpon>201606141713402_newtemes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606141922392_newtemes1.resx">
+      <DependentUpon>201606141922392_newtemes1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606141944228_newtemes2.resx">
+      <DependentUpon>201606141944228_newtemes2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606141953059_newtemes3.resx">
+      <DependentUpon>201606141953059_newtemes3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606142006048_newtemes4.resx">
+      <DependentUpon>201606142006048_newtemes4.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -3,33 +3,77 @@
     ViewBag.Title = "Questions editor";
 }
 
-<div class="row">
-    <div class="col-md-2">
-        <h2>Questions types</h2>
-
-        <ul>
-            <li>
-                @Html.ActionLink("Gramma questions", "Index", "GrammaQuestions")
-            </li>
-            <li>
-                @Html.ActionLink("Lexic questions", "Index", "LexicQuestions")
-            </li>
-        </ul>
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                    Questions
+                </a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <div class="list-group">
+                    <ul>
+                        <li>
+                            @Html.ActionLink("Gramma questions", "Index", "GrammaQuestions")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Lexic questions", "Index", "LexicQuestions", new { @class = "disabled"})
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="col-md-2">
-        <h2>Questions parameters</h2>
-
-        <ul>
-            <li>
-                @Html.ActionLink("LexicTypes", "Index", "LexicTypes")
-            </li>
-            <li>
-                @Html.ActionLink("EslLevels", "Index", "EslLevels")
-            </li>
-            <li>
-                @Html.ActionLink("GrammaCategories", "Index", "GrammaCategories")
-            </li>
-        </ul>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                    Themes
+                </a>
+            </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="list-group">
+                    <ul>
+                        <li>
+                            @Html.ActionLink("List of themes", "Index", "Themes")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Create a theme", "Create", "Themes")
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                    Questions parameters
+                </a>
+            </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="list-group">
+                    <ul id="parameters" name="parameters">
+                        <li>
+                            @Html.ActionLink("LexicTypes", "Index", "LexicTypes")
+                        </li>
+                        <li>
+                            @Html.ActionLink("EslLevels", "Index", "EslLevels")
+                        </li>
+                        <li>
+                            @Html.ActionLink("GrammaCategories", "Index", "GrammaCategories")
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

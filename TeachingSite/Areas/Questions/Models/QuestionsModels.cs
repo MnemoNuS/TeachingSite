@@ -12,42 +12,57 @@ namespace TeachingSite.Areas.Questions.Models
      class QuestionsContext : DbContext
     {
 		public QuestionsContext() : base("DBConnection") { }
+
+		public DbSet<Question> Questions { get; set; }
 		public DbSet<GrammaQuestion> GrammaQuestions { get; set; }
         public DbSet<LexicQuestion> LexicQuestions { get; set; }
         public DbSet<LexicType> LexicTypes { get; set; }
         public DbSet<GrammaCategory> GrammaCategories { get; set; }
         public DbSet<EslLevel> EslLevels { get; set; }
+        public DbSet<Theme> Themes { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Theme>().HasMany(c => c.Questions)
+                .WithMany(s => s.Themes)
+                .Map(t => t.MapLeftKey("ThemeId")
+                .MapRightKey("QuestionId")
+                .ToTable("ThemeQuestion"));
+        }
     }
 
     public class Question
     {
-        [Key]
         public int Id { get; set; }
         [DisplayName("Question")]
         public string Body { get; set; }
         [DisplayName("Answer")]
         public string Answer { get; set; }
-        public int? TypeId { get; set; }
         [DisplayName("Question type")]
         public virtual string Type { get; set; }
         [DisplayName("Creation date")]
-        public DateTime Date { get; set; }
+        public DateTime ModifiedAt { get; set; }
+        public virtual ICollection<Theme> Themes { get; set; }
+        public Question()
+        {
+            Themes = new List<Theme>();
+        }
     }
-
-	public class GrammaQuestion : Question
+    [DisplayName("Grammatical")]
+    public class GrammaQuestion : Question
     {
-        public override string Type { get { return "GrammaQuestion"; } }
+        public override string Type { get { return "Grammatical"; } }
         public int? EslLevelId { get; set; }
         [DisplayName("Esl Level")]
-        public EslLevel EslLevel { get; set; }
-        public int? GramaCategoryId { get; set; }
+        public string EslLevel { get; set; }
+        public int? GrammaCategoryId { get; set; }
         [DisplayName("Gramma category")]
-        public GrammaCategory GrammaCategory { get; set; }
+        public string GrammaCategory { get; set; }
     }
 
 	public class LexicQuestion : Question
     {
-        public override string Type { get { return "LexicQuestion"; } }
+        public override string Type { get { return "Lexical"; } }
         [DisplayName("Topic")]
         public string Topic { get; set; }
         public int? LexicTypeId { get; set; }
@@ -57,9 +72,8 @@ namespace TeachingSite.Areas.Questions.Models
 
     public class QuestionProperty
     {
-        [Key]
         public int Id { get; set; }
-        [DisplayName("Question type")]
+        [DisplayName("Property type")]
         public virtual string Type { get; set; }
     }
 
@@ -67,22 +81,50 @@ namespace TeachingSite.Areas.Questions.Models
     {
         public override string Type { get { return "LexicType"; } }
 		[DisplayName("Lexic type")]
-		public string Element { get; set; }
+		public string LexicTypeName { get; set; }
 	}
 
 	public class EslLevel : QuestionProperty
     {
         public override string Type { get { return "EslLevel"; } }
 		[DisplayName("Esl Level")]
-		public string Element { get; set; }
+		public string EslLevelName { get; set; }
 	}
 
 	public class GrammaCategory : QuestionProperty
     {
         public override string Type { get { return "GrammaCategory"; } }
 		[DisplayName("Gramma category")]
-		public string Element { get; set; }
+		public string GrammaCategoryName { get; set; }
 	}
+
+    public class ThemeSet
+    {
+        [Key]
+        public int Id { get; set; }
+        [DisplayName("Theme set title")]
+        [Required]
+        public string Name { get; set; }
+        [DisplayName("Theme set Description")]
+        public string Description { get; set; }
+        public List<Theme> Themes { get; set; }
+
+    }
+    public class Theme
+    {
+        [Key]
+        public int Id { get; set; }
+        [DisplayName("Theme title")]
+        [Required]
+        public string Name { get; set; }
+        [DisplayName("Theme Description")]
+        public string Description { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
+        public Theme()
+        {
+            Questions = new List<Question>();
+        }
+    }
 
 }
 
