@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewBag.Title - Pleasent English</title>
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta charset="utf-8" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/areas/questions/content/css/TS.css" rel="stylesheet" />
+    <link href="~/areas/questions/content/css/gf.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="main_border"></div>
+
+    <div class="container-fluid">
+
+        <div class="menu_frame">
+
+            <div class="logo PElogo"></div>
+            <div class="menu_handler">
+                MENU
+                <ol class="menu">
+                    <li class="menu_link">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { })</li>
+                    <li class="menu_link">@Html.ActionLink("Setings", "Index", "QuestionsEditor")</li>
+                    <li class="menu_link">Quit</li>
+                </ol>
+            </div>
+        </div>
+
+
+
+        <content class="row">
+
+            <div id="F">
+                <div id="FL">
+                    <div id="FLT"></div>@*Левая колонка верх*@
+                    <div id="FLM"></div>@*Левая колонка середина*@
+                    <div id="FLB"></div>@*Левая колонка низ*@
+                </div>
+
+                <div id="FC">
+                    <div id="FCT"></div>@*Центральная колонка верх*@
+                    <div id="FCM">
+                        @RenderBody()
+                    </div>
+                    <div id="FCB"></div>@*Центральная колонка низ*@
+                </div>
+
+                <div id="FR">
+                    <div id="FRT"></div>@*Правая колонка верх*@
+                    <div id="FRM"></div>@*Правая колонка середина*@
+                    <div id="FRB"></div>@*Правая колонка низ*@
+                </div>
+            </div>
+
+
+        </content>
+
+
+
+
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script type="text/javascript" src="~/areas/questions/content/js/game.js"></script>
+    <script type="text/javascript" src="~/areas/questions/content/js/timer.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

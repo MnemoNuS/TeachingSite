@@ -38,9 +38,15 @@ namespace TeachingSite.Areas.Questions.Controllers
         // GET: Questions/Themes/Create
         public ActionResult Create()
         {
-            ViewBag.GrammaQuestions = db.GrammaQuestions.ToList();
-            ViewBag.Questions = db.GrammaQuestions.ToList();
-            ViewBag.LexicalQuestions = db.GrammaQuestions.ToList();
+            List<GrammaQuestion> GQ = db.GrammaQuestions.ToList();
+            List<LexicQuestion> LQ = db.LexicQuestions.ToList();
+            List<Question> AQ = new List<Question>();
+            AQ.AddRange(GQ);
+            AQ.AddRange(LQ);
+            ViewBag.GrammaQuestions = GQ;
+            ViewBag.LexicQuestions = LQ;
+            ViewBag.Questions = AQ;
+
             return View();
         }
 

@@ -275,6 +275,13 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\200x200.png" />
+    <Content Include="Content\images\500x50.png" />
+    <Content Include="Content\images\abstract.jpg" />
+    <Content Include="Content\images\fon-stripe-footer.png" />
+    <Content Include="Content\images\fon.png" />
+    <Content Include="Content\images\spring.jpg" />
+    <Content Include="Content\images\watercolor.jpg" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -1116,7 +1123,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Areas\Questions\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Questions\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Questions\Views\QuestionsEditor\Index.cshtml" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -1219,6 +1225,9 @@
     <Content Include="Areas\Questions\Views\Themes\Details.cshtml" />
     <Content Include="Areas\Questions\Views\Themes\Edit.cshtml" />
     <Content Include="Areas\Questions\Views\Themes\Index.cshtml" />
+    <Content Include="Areas\Questions\Views\Shared\_GameLayout .cshtml" />
+    <Content Include="Areas\Questions\Views\Shared\_Layout.cshtml" />
+    <Content Include="Content\images\PE-logo.svg" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
